@@ -897,7 +897,7 @@ GameObject:
   - component: {fileID: 1751559852}
   m_Layer: 0
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Damagable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1094,6 +1094,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!54 &1788755031 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3639063803222158251, guid: 3f0d87ab9e3169b45916cb27cfcd659e,
+    type: 3}
+  m_PrefabInstance: {fileID: 47896120784520974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1788755032 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4696612837339703449, guid: 3f0d87ab9e3169b45916cb27cfcd659e,
@@ -1381,6 +1387,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4696612837339703449, guid: 3f0d87ab9e3169b45916cb27cfcd659e,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1788755031}
     - target: {fileID: 7670111294367171934, guid: 3f0d87ab9e3169b45916cb27cfcd659e,
         type: 3}
       propertyPath: healthUI
