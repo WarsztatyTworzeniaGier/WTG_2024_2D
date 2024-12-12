@@ -35,8 +35,8 @@ public class HealthUI : MonoBehaviour
         hearts.Add(newHeart);
     }
 
-    [ContextMenu(nameof(RemoveHearth))]
-    public void RemoveHearth()
+    [ContextMenu(nameof(RemoveHeart))]
+    public void RemoveHeart()
     {
         if (hearts.Count <= 0)
         {

@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour // klasa z której nasz skrypt dzied
 
     }
 
+    public void ResetVelocity() => rb.velocity = Vector2.zero;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
