@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("Data")]
-    private int startHearts = 3;
-
     [SerializeField]
-    private float respawnTime = 1.0f;
-
+    private PlayerData data;
+   
     [Header("Components")]
     [SerializeField]
     private PlayerMovement movement;
@@ -32,24 +29,26 @@ public class Player : MonoBehaviour
     private IEnumerator Respawn()
     {
         transform.DOScale(Vector3.zero, 0.2f).SetUpdate(true);
-        transform.DOMove(spawnPosition, respawnTime).SetUpdate(true);
-        transform.DORotate(Vector3.zero, respawnTime).SetUpdate(true);
+        transform.DOMove(spawnPosition, data.RespawnTime).SetUpdate(true);
+        transform.DORotate(Vector3.zero, data.RespawnTime).SetUpdate(true);
         Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(respawnTime);
+        yield return new WaitForSecondsRealtime(data.RespawnTime);
         transform.DOScale(Vector3.one, 0.2f).SetUpdate(true);
         yield return new WaitForSecondsRealtime(0.2f);
         movement.ResetVelocity();
         Time.timeScale = 1f;
-        currentHearts = startHearts;
+        currentHearts = data.StartHearts;
         healthUI.SetHearts(currentHearts);
     }
 
     private void Start()
     {
         spawnPosition = transform.position;
-        healthUI.SetHearts(startHearts);
-        currentHearts = startHearts;
+        healthUI.SetHearts(data.StartHearts);
+        currentHearts = data.StartHearts;
     }
+
+   
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -57,6 +56,8 @@ public class Player : MonoBehaviour
         {
             healthUI.RemoveHeart();
             currentHearts--;
+            GameManager.Instance.IncreaseDeathCount();
+
             if(currentHearts <= 0)
             {
                 StartRespawn();

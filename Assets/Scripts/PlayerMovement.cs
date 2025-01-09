@@ -5,16 +5,7 @@ using UnityEngine; //dyrektywa using/biblioteka
 public class PlayerMovement : MonoBehaviour // klasa z której nasz skrypt dziedziczy
 {
     [SerializeField]
-    private float moveSpeed = 10.0f;
-
-    [SerializeField]
-    private float jumpForce = 10f;
-
-    [SerializeField]
-    private float raycastDistance = 0.6f;
-
-    [SerializeField]
-    private string playerName = "Mario";
+    private PlayerData data;
 
     private bool isAlive = true;
 
@@ -29,7 +20,7 @@ public class PlayerMovement : MonoBehaviour // klasa z której nasz skrypt dzied
     {
         Debug.Log("cos");
 
-        moveSpeed = newSpeed;
+        data.MoveSpeed = newSpeed;
 
     }
 
@@ -61,18 +52,18 @@ public class PlayerMovement : MonoBehaviour // klasa z której nasz skrypt dzied
 
     private bool CheckIfIsGrounded()
     {
-        var ground = Physics.Raycast(transform.position, Vector3.down, raycastDistance);
+        var ground = Physics.Raycast(transform.position, Vector3.down, data.RaycastDistance);
         return ground;
     }
 
     private void Move()
     {
-        transform.position += (Vector3) moveInput *Time.deltaTime * moveSpeed; //porusznanie sie za pomocą transform
+        transform.position += (Vector3) moveInput *Time.deltaTime * data.MoveSpeed; //porusznanie sie za pomocą transform
     }
 
     private void Jump()
     {
         if (CheckIfIsGrounded())
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+            rb.AddForce(Vector3.up * data.JumpForce, ForceMode.VelocityChange);
     }
 }

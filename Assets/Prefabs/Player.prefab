@@ -74,7 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a434444d39c6c4eb65708e837d6c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 0}
+  data: {fileID: 11400000, guid: 309582622ebdccc4298e0c436744a976, type: 2}
+  movement: {fileID: 4696612837339703449}
   healthUI: {fileID: 0}
 --- !u!114 &4696612837339703449
 MonoBehaviour:
@@ -88,10 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066b890112c863244be8e91c0d959b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 14
-  jumpForce: 10
-  raycastDistance: 0.6
-  playerName: Mario
+  data: {fileID: 11400000, guid: 309582622ebdccc4298e0c436744a976, type: 2}
   rb: {fileID: 0}
 --- !u!1 &4211072533570787498
 GameObject:
